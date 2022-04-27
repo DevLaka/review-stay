@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 const Accommodation = require("./models/accommodation");
 
 mongoose.connect("mongodb://localhost:27017/review-stay");
@@ -13,6 +14,7 @@ db.once("open", () => {
 
 const app = express();
 
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));

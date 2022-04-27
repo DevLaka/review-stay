@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Show</title>
-  </head>
-  <body>
-    <h1><%= accommodation.title %></h1>
-    <h2><%= accommodation.location %></h2>
-    <p>
-      <form action="/accommodations/<%= accommodation._id %>?_method=DELETE" method="POST">
-        <button>Delete accommodation</button>
-      </form>
-    </p>
-    <footer>
-      <a href="/accommodations/<%= accommodation._id %>/edit"
-        >Edit accommodation</a
-      >
-      <a href="/accommodations">All accommodations</a>
-    </footer>
-  </body>
-</html>
+<% layout("layouts/boilerplate") %>
+<h1><%= accommodation.title %></h1>
+<h2><%= accommodation.location %></h2>
+<p>
+  <form action="/accommodations/<%= accommodation._id %>?_method=DELETE" method="POST">
+    <button>Delete accommodation</button>
+  </form>
+</p>
+<footer>
+  <a href="/accommodations/<%= accommodation._id %>/edit">
+    Edit accommodation
+  </a>
+  <a href="/accommodations">All accommodations</a>
+</footer>
