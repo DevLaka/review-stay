@@ -3,12 +3,27 @@
 <div>
   <a href="/accommodations/new">Add accommodation</a>
 </div>
-<ul>
-  <% for(const accommodation of accommodations) { %>
-  <li>
-    <a href="/accommodations/<%= accommodation._id %>">
-      <%= accommodation.title %>
-    </a>
-  </li>
-  <% } %>
-</ul>
+<% for (let accommodation of accommodations){%>
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="img-fluid" alt="" src="<%=accommodation.image%>" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= accommodation.title %></h5>
+        <p class="card-text"><%= accommodation.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%= accommodation.location%></small>
+        </p>
+        <a
+          class="btn btn-primary"
+          href="/accommodations/<%=accommodation._id%>"
+        >
+          View <%=accommodation.title%>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<% }%>

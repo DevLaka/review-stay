@@ -46,18 +46,24 @@ app.get("/accommodations/:id", async (req, res) => {
 });
 
 app.post("/accommodations", async (req, res) => {
-  const { title, location } = req.body.accommodation;
-  const accommodation = new Accommodation({ title, location });
+  const { title, location, image, description, price } = req.body.accommodation;
+  const accommodation = new Accommodation({
+    title,
+    location,
+    image,
+    description,
+    price,
+  });
   await accommodation.save();
   res.redirect(`/accommodations/${accommodation._id}`);
 });
 
 app.put("/accommodations/:id", async (req, res) => {
   const { id } = req.params;
-  const { title, location } = req.body.accommodation;
+  const { title, location, image, description, price } = req.body.accommodation;
   const accommodation = await Accommodation.findByIdAndUpdate(
     id,
-    { title, location },
+    { title, location, image, description, price },
     { new: true }
   );
   res.redirect(`/accommodations/${accommodation._id}`);
