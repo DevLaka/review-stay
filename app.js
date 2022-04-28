@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
+const { accommodationSchema } = require("./schemas");
 const Accommodation = require("./models/accommodation");
 
 mongoose.connect("mongodb://localhost:27017/review-stay");
@@ -21,6 +22,16 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
+const validateAccommodation = (req, res, next) => {
+  const { error } = accommodationSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -58,6 +69,7 @@ app.get(
 
 app.post(
   "/accommodations",
+  validateAccommodation,
   catchAsync(async (req, res) => {
     const { title, location, image, description, price } =
       req.body.accommodation;
@@ -75,6 +87,7 @@ app.post(
 
 app.put(
   "/accommodations/:id",
+  validateAccommodation,
   catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const { title, location, image, description, price } =
