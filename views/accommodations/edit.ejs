@@ -5,6 +5,8 @@
     <form
       action="/accommodations/<%= accommodation._id %>?_method=PUT"
       method="POST"
+      novalidate
+      class="needs-validation"
     >
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
@@ -14,7 +16,10 @@
           id="title"
           name="accommodation[title]"
           value="<%= accommodation.title %>"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
@@ -24,7 +29,10 @@
           id="location"
           name="accommodation[location]"
           value="<%= accommodation.location %>"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="image">Image URL</label>
@@ -34,7 +42,10 @@
           id="image"
           name="accommodation[image]"
           value="<%= accommodation.image %>"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="price">Accommodation Price</label>
@@ -49,7 +60,10 @@
             aria-describedby="price-label"
             name="accommodation[price]"
             value="<%= accommodation.price %>"
+            required
           />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Invalid input!</div>
         </div>
       </div>
       <div class="mb-3">
@@ -59,9 +73,12 @@
           type="text"
           id="description"
           name="accommodation[description]"
+          required
         >
 <%= accommodation.description %></textarea
         >
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <button class="btn btn-info">Update Accommodation</button>

@@ -2,7 +2,12 @@
 <div class="row">
   <h1 class="text-center">New Accommodation</h1>
   <div class="col-6 offset-3">
-    <form action="/accommodations" method="POST">
+    <form
+      action="/accommodations"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
         <input
@@ -10,7 +15,10 @@
           type="text"
           id="title"
           name="accommodation[title]"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
@@ -19,7 +27,10 @@
           type="text"
           id="location"
           name="accommodation[location]"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="image">Image URL</label>
@@ -28,21 +39,27 @@
           type="text"
           id="image"
           name="accommodation[image]"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="price">Accommodation Price</label>
         <div class="input-group">
           <span class="input-group-text" id="price-label">$</span>
           <input
-            type="text"
+            type="number"
             class="form-control"
             id="price"
             placeholder="0.00"
             aria-label="price"
             aria-describedby="price-label"
             name="accommodation[price]"
+            required
           />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Invalid input!</div>
         </div>
       </div>
       <div class="mb-3">
@@ -52,7 +69,10 @@
           type="text"
           id="description"
           name="accommodation[description]"
+          required
         ></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid input!</div>
       </div>
       <div class="mb-3">
         <button class="btn btn-success">Add Accommodation</button>
